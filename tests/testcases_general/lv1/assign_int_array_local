@@ -1,0 +1,20 @@
+; ModuleID = 'cminus'
+source_filename = "/home/wyh/2024ustc-jianmu-compiler/tests/testcases_general/lv1/assign_int_array_local.cminus"
+
+declare i32 @input()
+
+declare void @output(i32)
+
+declare void @outputFloat(float)
+
+declare void @neg_idx_except()
+
+define void @main() {
+label_entry:
+  %op0 = alloca i32
+  store i32 1234, i32* %op0
+  %op1 = getelementptr i32, i32* %op0, i32 3
+  %op2 = load i32, i32* %op1
+  call void @output(i32 %op2)
+  ret void
+}

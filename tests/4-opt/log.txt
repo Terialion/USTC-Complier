@@ -1,0 +1,143 @@
+==========../testcases_general//1-return.cminus==========
+Loop Detection Result:
+0								0
+==========../testcases_general//2-decl_int.cminus==========
+Loop Detection Result:
+0								0
+==========../testcases_general//3-decl_float.cminus==========
+Loop Detection Result:
+0								0
+==========../testcases_general//4-decl_int_array.cminus==========
+Loop Detection Result:
+0								0
+==========../testcases_general//5-decl_float_array.cminus==========
+Loop Detection Result:
+0								0
+==========../testcases_general//6-num_add_int.cminus==========
+Loop Detection Result:
+210								210
+==========../testcases_general//7-assign_int_var_local.cminus==========
+Loop Detection Result:
+210								210
+==========../testcases_general//8-assign_int_array_local.cminus==========
+Loop Detection Result:
+210								210
+==========../testcases_general//9-assign_cast.cminus==========
+Loop Detection Result:
+5								5
+==========../testcases_general//10-funcall.cminus==========
+Loop Detection Result:
+0								0
+==========../testcases_general//11-funcall_chain.cminus==========
+Loop Detection Result:
+210								210
+==========../testcases_general//12-funcall_recursion.cminus==========
+Loop Detection Result:
+0								0
+==========../testcases_general//13-if_stmt.cminus==========
+Loop Detection Result:
+0								0
+==========../testcases_general//14-while_stmt.cminus==========
+Loop Detection Result:
+Loop header: label0
+Loop blocks: label0 label3 
+Sub loops: 
+Instruction: %op1 = phi i32 [ 10, %label_entry ], [ %op4, %label3 ]
+Instruction: %op2 = icmp ne i32 %op1, 0
+Instruction: br i1 %op2, label %label3, label %label5
+Instruction: %op4 = sub i32 %op1, 1
+Instruction: br label %label0
+Instruction: br i1 %op2, label %label3, label %label5
+Instruction: %op2 = icmp ne i32 %op1, 0
+Instruction: %op4 = sub i32 %op1, 1
+Instruction: br label %label0
+Instruction: %op1 = phi i32 [ 10, %label_entry ], [ %op4, %label3 ]
+0								0
+==========../testcases_general//15-if_while.cminus==========
+Loop Detection Result:
+Loop header: label0
+Loop blocks: label0 label14 label17 label5 label12 
+Sub loops: 
+Instruction: %op1 = phi i32 [ 0, %label_entry ], [ %op15, %label14 ]
+Instruction: %op2 = phi i32 [ 10, %label_entry ], [ %op6, %label14 ]
+Instruction: %op3 = phi i32 [ 0, %label_entry ], [ %op16, %label14 ]
+Instruction: %op4 = icmp ne i32 %op2, 0
+Instruction: br i1 %op4, label %label5, label %label10
+Instruction: %op15 = phi i32 [ %op13, %label12 ], [ %op1, %label17 ]
+Instruction: %op16 = phi i32 [ %op3, %label12 ], [ %op18, %label17 ]
+Instruction: br label %label0
+Instruction: %op18 = add i32 %op3, %op6
+Instruction: br label %label14
+Instruction: %op6 = sub i32 %op2, 1
+Instruction: %op7 = icmp slt i32 %op6, 5
+Instruction: %op8 = zext i1 %op7 to i32
+Instruction: %op9 = icmp ne i32 %op8, 0
+Instruction: br i1 %op9, label %label12, label %label17
+Instruction: %op13 = add i32 %op1, %op6
+Instruction: br label %label14
+Instruction: %op4 = icmp ne i32 %op2, 0
+Instruction: br i1 %op4, label %label5, label %label10
+Instruction: %op6 = sub i32 %op2, 1
+Instruction: %op7 = icmp slt i32 %op6, 5
+Instruction: %op8 = zext i1 %op7 to i32
+Instruction: %op9 = icmp ne i32 %op8, 0
+Instruction: br i1 %op9, label %label12, label %label17
+Instruction: %op13 = add i32 %op1, %op6
+Instruction: br label %label14
+Instruction: %op18 = add i32 %op3, %op6
+Instruction: br label %label14
+Instruction: br label %label0
+Instruction: %op16 = phi i32 [ %op3, %label12 ], [ %op18, %label17 ]
+Instruction: %op3 = phi i32 [ 0, %label_entry ], [ %op16, %label14 ]
+Instruction: %op2 = phi i32 [ 10, %label_entry ], [ %op6, %label14 ]
+Instruction: %op15 = phi i32 [ %op13, %label12 ], [ %op1, %label17 ]
+Instruction: %op1 = phi i32 [ 0, %label_entry ], [ %op15, %label14 ]
+45								45
+==========../testcases_general//16-if_chain.cminus==========
+Loop Detection Result:
+3								3
+==========../testcases_general//17-while_chain.cminus==========
+Loop Detection Result:
+Loop header: label8
+Loop blocks: label8 label11 
+Sub loops: 
+Loop header: label0
+Loop blocks: label0 label13 label4 
+Sub loops: label8 
+Instruction: %op9 = phi i32 [ %op5, %label4 ], [ %op12, %label11 ]
+Instruction: %op10 = icmp ne i32 %op9, 0
+Instruction: br i1 %op10, label %label11, label %label13
+Instruction: %op12 = sub i32 %op9, 1
+Instruction: br label %label8
+Instruction: %op10 = icmp ne i32 %op9, 0
+Instruction: br i1 %op10, label %label11, label %label13
+Instruction: %op12 = sub i32 %op9, 1
+Instruction: br label %label8
+Instruction: %op9 = phi i32 [ %op5, %label4 ], [ %op12, %label11 ]
+Instruction: %op1 = phi i32 [ %op9, %label13 ], [ undef, %label_entry ]
+Instruction: %op2 = phi i32 [ 10, %label_entry ], [ %op5, %label13 ]
+Instruction: %op3 = icmp ne i32 %op2, 0
+Instruction: br i1 %op3, label %label4, label %label6
+Instruction: br label %label0
+Instruction: %op5 = sub i32 %op2, 1
+Instruction: br label %label8
+Instruction: br i1 %op3, label %label4, label %label6
+Instruction: %op3 = icmp ne i32 %op2, 0
+Instruction: %op5 = sub i32 %op2, 1
+Instruction: br label %label8
+Instruction: br label %label0
+Instruction: %op2 = phi i32 [ 10, %label_entry ], [ %op5, %label13 ]
+Instruction: %op1 = phi i32 [ %op9, %label13 ], [ undef, %label_entry ]
+0								0
+==========../testcases_general//18-global_var.cminus==========
+Loop Detection Result:
+10								10
+==========../testcases_general//19-global_local_var.cminus==========
+Loop Detection Result:
+20								20
+==========../testcases_general//20-gcd_array.cminus==========
+Loop Detection Result:
+18								18
+==========../testcases_general//21-comment.cminus==========
+Loop Detection Result:
+0								0

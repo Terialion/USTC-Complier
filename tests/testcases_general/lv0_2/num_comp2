@@ -1,0 +1,54 @@
+; ModuleID = 'cminus'
+source_filename = "/home/wyh/2024ustc-jianmu-compiler/tests/testcases_general/lv0_2/num_comp2.cminus"
+
+declare i32 @input()
+
+declare void @output(i32)
+
+declare void @outputFloat(float)
+
+declare void @neg_idx_except()
+
+define void @main() {
+label_entry:
+  %op0 = sitofp i32 1 to float
+  %op1 = fcmp ugt float %op0, 0x4000000000000000
+  %op2 = zext i1 %op1 to i32
+  %op3 = icmp slt i32 %op2, 3
+  %op4 = zext i1 %op3 to i32
+  call void @output(i32 %op4)
+  %op5 = icmp sgt i32 1, 2
+  %op6 = icmp eq i32 3, 4
+  %op7 = zext i1 %op6 to i32
+  %op8 = icmp sge i32 %op7, 0
+  %op9 = zext i1 %op5 to i32
+  %op10 = zext i1 %op8 to i32
+  %op11 = icmp slt i32 %op9, %op10
+  %op12 = zext i1 %op11 to i32
+  call void @output(i32 %op12)
+  %op13 = sitofp i32 3 to float
+  %op14 = fcmp ueq float %op13, 0x4010000000000000
+  %op15 = zext i1 %op14 to i32
+  %op16 = icmp sge i32 %op15, 0
+  %op17 = icmp ne i32 4, 4
+  %op18 = zext i1 %op16 to i32
+  %op19 = zext i1 %op17 to i32
+  %op20 = icmp sle i32 %op18, %op19
+  %op21 = zext i1 %op20 to i32
+  call void @output(i32 %op21)
+  %op22 = icmp sgt i32 1, 2
+  %op23 = icmp eq i32 3, 4
+  %op24 = zext i1 %op23 to i32
+  %op25 = icmp sge i32 %op24, 0
+  %op26 = zext i1 %op22 to i32
+  %op27 = zext i1 %op25 to i32
+  %op28 = icmp slt i32 %op26, %op27
+  %op29 = sitofp i32 4 to float
+  %op30 = fcmp une float 0x4010000000000000, %op29
+  %op31 = zext i1 %op28 to i32
+  %op32 = zext i1 %op30 to i32
+  %op33 = icmp sle i32 %op31, %op32
+  %op34 = zext i1 %op33 to i32
+  call void @output(i32 %op34)
+  ret void
+}

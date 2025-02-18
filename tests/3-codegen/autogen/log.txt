@@ -1,0 +1,938 @@
+==========./testcases/0-io.cminus==========
+Translating basic block: .main_label_entry
+Translating basic block: %op0 = call i32 @input()
+Translating basic block: input
+Translating basic block: call void @output(i32 %op0)
+Translating basic block: %op0 = call i32 @input()
+Translating basic block: output
+Translating basic block: ret i32 0
+1234								1234
+0								0
+==========./testcases/1-return.cminus==========
+Translating basic block: .main_label_entry
+Translating basic block: call void @output(i32 111)
+Translating basic block: 111
+Translating basic block: output
+Translating basic block: ret i32 111
+111								111
+111								111
+==========./testcases/2-calculate.cminus==========
+Translating basic block: .main_label_entry
+Translating basic block: %op0 = alloca i32
+Translating basic block: %op1 = alloca i32
+Translating basic block: %op2 = alloca i32
+Translating basic block: store i32 23, i32* %op0
+Translating basic block: store i32 25, i32* %op1
+Translating basic block: store i32 4, i32* %op2
+Translating basic block: %op3 = load i32, i32* %op0
+Translating basic block: %op4 = load i32, i32* %op1
+Translating basic block: %op5 = load i32, i32* %op2
+Translating basic block: %op6 = mul i32 %op4, %op5
+Translating basic block: %op7 = add i32 %op3, %op6
+Translating basic block: ret i32 %op7
+123								123
+==========./testcases/3-output.cminus==========
+Translating basic block: .main_label_entry
+Translating basic block: call void @output(i32 11)
+Translating basic block: 11
+Translating basic block: output
+Translating basic block: call void @output(i32 22222)
+Translating basic block: 22222
+Translating basic block: output
+Translating basic block: ret i32 0
+11								11
+22222								22222
+0								0
+==========./testcases/4-if.cminus==========
+Translating basic block: .main_label_entry
+Translating basic block: %op0 = alloca i32
+Translating basic block: %op1 = alloca i32
+Translating basic block: %op2 = alloca i32
+Translating basic block: store i32 11, i32* %op0
+Translating basic block: store i32 22, i32* %op1
+Translating basic block: store i32 33, i32* %op2
+Translating basic block: %op3 = load i32, i32* %op0
+Translating basic block: %op4 = load i32, i32* %op1
+Translating basic block: %op5 = icmp sgt i32 %op3, %op4
+Translating basic block: %op6 = zext i1 %op5 to i32
+Translating basic block: %op7 = icmp ne i32 %op6, 0
+Translating basic block: br i1 %op7, label %label8, label %label15
+Translating basic block: .main_label8
+Translating basic block: %op9 = load i32, i32* %op0
+Translating basic block: %op10 = load i32, i32* %op2
+Translating basic block: %op11 = icmp sgt i32 %op9, %op10
+Translating basic block: %op12 = zext i1 %op11 to i32
+Translating basic block: %op13 = icmp ne i32 %op12, 0
+Translating basic block: br i1 %op13, label %label21, label %label24
+Translating basic block: .main_label14
+Translating basic block: ret i32 0
+Translating basic block: .main_label15
+Translating basic block: %op16 = load i32, i32* %op2
+Translating basic block: %op17 = load i32, i32* %op1
+Translating basic block: %op18 = icmp slt i32 %op16, %op17
+Translating basic block: %op19 = zext i1 %op18 to i32
+Translating basic block: %op20 = icmp ne i32 %op19, 0
+Translating basic block: br i1 %op20, label %label26, label %label29
+Translating basic block: .main_label21
+Translating basic block: %op22 = load i32, i32* %op0
+Translating basic block: call void @output(i32 %op22)
+Translating basic block: %op22 = load i32, i32* %op0
+Translating basic block: output
+Translating basic block: br label %label23
+Translating basic block: .main_label23
+Translating basic block: br label %label14
+Translating basic block: .main_label24
+Translating basic block: %op25 = load i32, i32* %op2
+Translating basic block: call void @output(i32 %op25)
+Translating basic block: %op25 = load i32, i32* %op2
+Translating basic block: output
+Translating basic block: br label %label23
+Translating basic block: .main_label26
+Translating basic block: %op27 = load i32, i32* %op1
+Translating basic block: call void @output(i32 %op27)
+Translating basic block: %op27 = load i32, i32* %op1
+Translating basic block: output
+Translating basic block: br label %label28
+Translating basic block: .main_label28
+Translating basic block: br label %label14
+Translating basic block: .main_label29
+Translating basic block: %op30 = load i32, i32* %op2
+Translating basic block: call void @output(i32 %op30)
+Translating basic block: %op30 = load i32, i32* %op2
+Translating basic block: output
+Translating basic block: br label %label28
+33								33
+0								0
+==========./testcases/5-while.cminus==========
+Translating basic block: .main_label_entry
+Translating basic block: %op0 = alloca i32
+Translating basic block: %op1 = alloca i32
+Translating basic block: store i32 10, i32* %op0
+Translating basic block: store i32 0, i32* %op1
+Translating basic block: br label %label2
+Translating basic block: .main_label2
+Translating basic block: %op3 = load i32, i32* %op1
+Translating basic block: %op4 = load i32, i32* %op0
+Translating basic block: %op5 = icmp slt i32 %op3, %op4
+Translating basic block: %op6 = zext i1 %op5 to i32
+Translating basic block: %op7 = icmp ne i32 %op6, 0
+Translating basic block: br i1 %op7, label %label8, label %label12
+Translating basic block: .main_label8
+Translating basic block: %op9 = load i32, i32* %op1
+Translating basic block: call void @output(i32 %op9)
+Translating basic block: %op9 = load i32, i32* %op1
+Translating basic block: output
+Translating basic block: %op10 = load i32, i32* %op1
+Translating basic block: %op11 = add i32 %op10, 1
+Translating basic block: store i32 %op11, i32* %op1
+Translating basic block: br label %label2
+Translating basic block: .main_label12
+Translating basic block: ret i32 0
+0								0
+1								1
+2								2
+3								3
+4								4
+5								5
+6								6
+7								7
+8								8
+9								9
+0								0
+==========./testcases/6-array.cminus==========
+Translating basic block: .main_label_entry
+Translating basic block: %op0 = alloca [10 x i32]
+Translating basic block: %op1 = alloca i32
+Translating basic block: store i32 0, i32* %op1
+Translating basic block: %op2 = icmp slt i32 0, 0
+Translating basic block: br i1 %op2, label %label3, label %label4
+Translating basic block: .main_label3
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label4
+Translating basic block: %op5 = getelementptr [10 x i32], [10 x i32]* %op0, i32 0, i32 0
+0
+
+Translating basic block: store i32 11, i32* %op5
+Translating basic block: %op6 = icmp slt i32 4, 0
+Translating basic block: br i1 %op6, label %label7, label %label8
+Translating basic block: .main_label7
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label8
+Translating basic block: %op9 = getelementptr [10 x i32], [10 x i32]* %op0, i32 0, i32 4
+4
+
+Translating basic block: store i32 22, i32* %op9
+Translating basic block: %op10 = icmp slt i32 9, 0
+Translating basic block: br i1 %op10, label %label11, label %label12
+Translating basic block: .main_label11
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label12
+Translating basic block: %op13 = getelementptr [10 x i32], [10 x i32]* %op0, i32 0, i32 9
+9
+
+Translating basic block: store i32 33, i32* %op13
+Translating basic block: %op14 = icmp slt i32 0, 0
+Translating basic block: br i1 %op14, label %label15, label %label16
+Translating basic block: .main_label15
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label16
+Translating basic block: %op17 = getelementptr [10 x i32], [10 x i32]* %op0, i32 0, i32 0
+0
+
+Translating basic block: %op18 = load i32, i32* %op17
+Translating basic block: call void @output(i32 %op18)
+Translating basic block: %op18 = load i32, i32* %op17
+Translating basic block: output
+Translating basic block: %op19 = icmp slt i32 4, 0
+Translating basic block: br i1 %op19, label %label20, label %label21
+Translating basic block: .main_label20
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label21
+Translating basic block: %op22 = getelementptr [10 x i32], [10 x i32]* %op0, i32 0, i32 4
+4
+
+Translating basic block: %op23 = load i32, i32* %op22
+Translating basic block: call void @output(i32 %op23)
+Translating basic block: %op23 = load i32, i32* %op22
+Translating basic block: output
+Translating basic block: %op24 = icmp slt i32 9, 0
+Translating basic block: br i1 %op24, label %label25, label %label26
+Translating basic block: .main_label25
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label26
+Translating basic block: %op27 = getelementptr [10 x i32], [10 x i32]* %op0, i32 0, i32 9
+9
+
+Translating basic block: %op28 = load i32, i32* %op27
+Translating basic block: call void @output(i32 %op28)
+Translating basic block: %op28 = load i32, i32* %op27
+Translating basic block: output
+Translating basic block: ret i32 0
+11								11
+22								22
+33								33
+0								0
+==========./testcases/7-function.cminus==========
+Translating basic block: .min_label_entry
+Translating basic block: %op2 = alloca i32
+Translating basic block: store i32 %arg0, i32* %op2
+Translating basic block: %op3 = alloca i32
+Translating basic block: store i32 %arg1, i32* %op3
+Translating basic block: %op4 = load i32, i32* %op2
+Translating basic block: %op5 = load i32, i32* %op3
+Translating basic block: %op6 = icmp sle i32 %op4, %op5
+Translating basic block: %op7 = zext i1 %op6 to i32
+Translating basic block: %op8 = icmp ne i32 %op7, 0
+Translating basic block: br i1 %op8, label %label9, label %label12
+Translating basic block: .min_label9
+Translating basic block: %op10 = load i32, i32* %op2
+Translating basic block: ret i32 %op10
+Translating basic block: .min_label11
+Translating basic block: ret i32 0
+Translating basic block: .min_label12
+Translating basic block: %op13 = load i32, i32* %op3
+Translating basic block: ret i32 %op13
+Translating basic block: .main_label_entry
+Translating basic block: %op0 = alloca i32
+Translating basic block: %op1 = alloca i32
+Translating basic block: %op2 = alloca i32
+Translating basic block: store i32 11, i32* %op0
+Translating basic block: store i32 22, i32* %op1
+Translating basic block: store i32 33, i32* %op2
+Translating basic block: %op3 = load i32, i32* %op0
+Translating basic block: %op4 = load i32, i32* %op1
+Translating basic block: %op5 = call i32 @min(i32 %op3, i32 %op4)
+Translating basic block: %op3 = load i32, i32* %op0
+Translating basic block: %op4 = load i32, i32* %op1
+Translating basic block: min
+Translating basic block: call void @output(i32 %op5)
+Translating basic block: %op5 = call i32 @min(i32 %op3, i32 %op4)
+Translating basic block: output
+Translating basic block: %op6 = load i32, i32* %op1
+Translating basic block: %op7 = load i32, i32* %op2
+Translating basic block: %op8 = call i32 @min(i32 %op6, i32 %op7)
+Translating basic block: %op6 = load i32, i32* %op1
+Translating basic block: %op7 = load i32, i32* %op2
+Translating basic block: min
+Translating basic block: call void @output(i32 %op8)
+Translating basic block: %op8 = call i32 @min(i32 %op6, i32 %op7)
+Translating basic block: output
+Translating basic block: %op9 = load i32, i32* %op2
+Translating basic block: %op10 = load i32, i32* %op0
+Translating basic block: %op11 = call i32 @min(i32 %op9, i32 %op10)
+Translating basic block: %op9 = load i32, i32* %op2
+Translating basic block: %op10 = load i32, i32* %op0
+Translating basic block: min
+Translating basic block: call void @output(i32 %op11)
+Translating basic block: %op11 = call i32 @min(i32 %op9, i32 %op10)
+Translating basic block: output
+Translating basic block: ret i32 0
+11								11
+22								22
+11								11
+0								0
+==========./testcases/8-store.cminus==========
+Translating basic block: .store_label_entry
+Translating basic block: %op3 = alloca i32*
+Translating basic block: store i32* %arg0, i32** %op3
+Translating basic block: %op4 = alloca i32
+Translating basic block: store i32 %arg1, i32* %op4
+Translating basic block: %op5 = alloca i32
+Translating basic block: store i32 %arg2, i32* %op5
+Translating basic block: %op6 = load i32, i32* %op5
+Translating basic block: %op7 = load i32, i32* %op4
+Translating basic block: %op8 = icmp slt i32 %op7, 0
+Translating basic block: br i1 %op8, label %label9, label %label10
+Translating basic block: .store_label9
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .store_label10
+Translating basic block: %op11 = load i32*, i32** %op3
+Translating basic block: %op12 = getelementptr i32, i32* %op11, i32 %op7
+Translating basic block: store i32 %op6, i32* %op12
+Translating basic block: %op13 = load i32, i32* %op5
+Translating basic block: ret i32 %op13
+Translating basic block: .main_label_entry
+Translating basic block: %op0 = alloca [10 x i32]
+Translating basic block: %op1 = alloca i32
+Translating basic block: %op2 = alloca i32
+Translating basic block: store i32 0, i32* %op1
+Translating basic block: br label %label3
+Translating basic block: .main_label3
+Translating basic block: %op4 = load i32, i32* %op1
+Translating basic block: %op5 = icmp slt i32 %op4, 10
+Translating basic block: %op6 = zext i1 %op5 to i32
+Translating basic block: %op7 = icmp ne i32 %op6, 0
+Translating basic block: br i1 %op7, label %label8, label %label16
+Translating basic block: .main_label8
+Translating basic block: %op9 = getelementptr [10 x i32], [10 x i32]* %op0, i32 0, i32 0
+0
+
+Translating basic block: %op10 = load i32, i32* %op1
+Translating basic block: %op11 = load i32, i32* %op1
+Translating basic block: %op12 = mul i32 %op11, 2
+Translating basic block: %op13 = call i32 @store(i32* %op9, i32 %op10, i32 %op12)
+Translating basic block: %op9 = getelementptr [10 x i32], [10 x i32]* %op0, i32 0, i32 0
+Translating basic block: %op10 = load i32, i32* %op1
+Translating basic block: %op12 = mul i32 %op11, 2
+Translating basic block: store
+Translating basic block: %op14 = load i32, i32* %op1
+Translating basic block: %op15 = add i32 %op14, 1
+Translating basic block: store i32 %op15, i32* %op1
+Translating basic block: br label %label3
+Translating basic block: .main_label16
+Translating basic block: store i32 0, i32* %op2
+Translating basic block: store i32 0, i32* %op1
+Translating basic block: br label %label17
+Translating basic block: .main_label17
+Translating basic block: %op18 = load i32, i32* %op1
+Translating basic block: %op19 = icmp slt i32 %op18, 10
+Translating basic block: %op20 = zext i1 %op19 to i32
+Translating basic block: %op21 = icmp ne i32 %op20, 0
+Translating basic block: br i1 %op21, label %label22, label %label26
+Translating basic block: .main_label22
+Translating basic block: %op23 = load i32, i32* %op2
+Translating basic block: %op24 = load i32, i32* %op1
+Translating basic block: %op25 = icmp slt i32 %op24, 0
+Translating basic block: br i1 %op25, label %label28, label %label29
+Translating basic block: .main_label26
+Translating basic block: %op27 = load i32, i32* %op2
+Translating basic block: call void @output(i32 %op27)
+Translating basic block: %op27 = load i32, i32* %op2
+Translating basic block: output
+Translating basic block: ret i32 0
+Translating basic block: .main_label28
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label29
+Translating basic block: %op30 = getelementptr [10 x i32], [10 x i32]* %op0, i32 0, i32 %op24
+%op24 = load i32, i32* %op1
+op24
+Translating basic block: %op31 = load i32, i32* %op30
+Translating basic block: %op32 = add i32 %op23, %op31
+Translating basic block: store i32 %op32, i32* %op2
+Translating basic block: %op33 = load i32, i32* %op1
+Translating basic block: %op34 = add i32 %op33, 1
+Translating basic block: store i32 %op34, i32* %op1
+Translating basic block: br label %label17
+90								90
+0								0
+==========./testcases/9-fibonacci.cminus==========
+Translating basic block: .fibonacci_label_entry
+Translating basic block: %op1 = alloca i32
+Translating basic block: store i32 %arg0, i32* %op1
+Translating basic block: %op2 = load i32, i32* %op1
+Translating basic block: %op3 = icmp eq i32 %op2, 0
+Translating basic block: %op4 = zext i1 %op3 to i32
+Translating basic block: %op5 = icmp ne i32 %op4, 0
+Translating basic block: br i1 %op5, label %label6, label %label8
+Translating basic block: .fibonacci_label6
+Translating basic block: ret i32 0
+Translating basic block: .fibonacci_label7
+Translating basic block: ret i32 0
+Translating basic block: .fibonacci_label8
+Translating basic block: %op9 = load i32, i32* %op1
+Translating basic block: %op10 = icmp eq i32 %op9, 1
+Translating basic block: %op11 = zext i1 %op10 to i32
+Translating basic block: %op12 = icmp ne i32 %op11, 0
+Translating basic block: br i1 %op12, label %label13, label %label15
+Translating basic block: .fibonacci_label13
+Translating basic block: ret i32 1
+Translating basic block: .fibonacci_label14
+Translating basic block: br label %label7
+Translating basic block: .fibonacci_label15
+Translating basic block: %op16 = load i32, i32* %op1
+Translating basic block: %op17 = sub i32 %op16, 1
+Translating basic block: %op18 = call i32 @fibonacci(i32 %op17)
+Translating basic block: %op17 = sub i32 %op16, 1
+Translating basic block: fibonacci
+Translating basic block: %op19 = load i32, i32* %op1
+Translating basic block: %op20 = sub i32 %op19, 2
+Translating basic block: %op21 = call i32 @fibonacci(i32 %op20)
+Translating basic block: %op20 = sub i32 %op19, 2
+Translating basic block: fibonacci
+Translating basic block: %op22 = add i32 %op18, %op21
+Translating basic block: ret i32 %op22
+Translating basic block: .main_label_entry
+Translating basic block: %op0 = alloca i32
+Translating basic block: %op1 = alloca i32
+Translating basic block: store i32 10, i32* %op0
+Translating basic block: store i32 0, i32* %op1
+Translating basic block: br label %label2
+Translating basic block: .main_label2
+Translating basic block: %op3 = load i32, i32* %op1
+Translating basic block: %op4 = load i32, i32* %op0
+Translating basic block: %op5 = icmp slt i32 %op3, %op4
+Translating basic block: %op6 = zext i1 %op5 to i32
+Translating basic block: %op7 = icmp ne i32 %op6, 0
+Translating basic block: br i1 %op7, label %label8, label %label13
+Translating basic block: .main_label8
+Translating basic block: %op9 = load i32, i32* %op1
+Translating basic block: %op10 = call i32 @fibonacci(i32 %op9)
+Translating basic block: %op9 = load i32, i32* %op1
+Translating basic block: fibonacci
+Translating basic block: call void @output(i32 %op10)
+Translating basic block: %op10 = call i32 @fibonacci(i32 %op9)
+Translating basic block: output
+Translating basic block: %op11 = load i32, i32* %op1
+Translating basic block: %op12 = add i32 %op11, 1
+Translating basic block: store i32 %op12, i32* %op1
+Translating basic block: br label %label2
+Translating basic block: .main_label13
+Translating basic block: ret i32 0
+0								0
+1								1
+1								1
+2								2
+3								3
+5								5
+8								8
+13								13
+21								21
+34								34
+0								0
+==========./testcases/10-float.cminus==========
+Translating basic block: .main_label_entry
+Translating basic block: %op0 = alloca float
+Translating basic block: %op1 = alloca float
+Translating basic block: %op2 = alloca float
+Translating basic block: store float 0x3ff19999a0000000, float* %op0
+Translating basic block: store float 0x3ff8000000000000, float* %op1
+Translating basic block: store float 0x3ff3333340000000, float* %op2
+Translating basic block: %op3 = load float, float* %op0
+Translating basic block: %op4 = load float, float* %op1
+Translating basic block: %op5 = fmul float %op3, %op4
+Translating basic block: %op6 = load float, float* %op2
+Translating basic block: %op7 = fadd float %op5, %op6
+Translating basic block: call void @outputFloat(float %op7)
+Translating basic block: %op7 = fadd float %op5, %op6
+Translating basic block: outputFloat
+Translating basic block: ret i32 0
+2.850000							2.850000
+0								0
+==========./testcases/11-floatcall.cminus==========
+Translating basic block: .mod_label_entry
+Translating basic block: %op2 = alloca float
+Translating basic block: store float %arg0, float* %op2
+Translating basic block: %op3 = alloca float
+Translating basic block: store float %arg1, float* %op3
+Translating basic block: %op4 = alloca i32
+Translating basic block: %op5 = load float, float* %op2
+Translating basic block: %op6 = load float, float* %op3
+Translating basic block: %op7 = fdiv float %op5, %op6
+Translating basic block: %op8 = fptosi float %op7 to i32
+Translating basic block: store i32 %op8, i32* %op4
+Translating basic block: %op9 = load float, float* %op2
+Translating basic block: %op10 = load i32, i32* %op4
+Translating basic block: %op11 = load float, float* %op3
+Translating basic block: %op12 = sitofp i32 %op10 to float
+Translating basic block: %op13 = fmul float %op12, %op11
+Translating basic block: %op14 = fsub float %op9, %op13
+Translating basic block: ret float %op14
+Translating basic block: .main_label_entry
+Translating basic block: %op0 = alloca float
+Translating basic block: %op1 = alloca float
+Translating basic block: store float 0x4026666660000000, float* %op0
+Translating basic block: store float 0x40019999a0000000, float* %op1
+Translating basic block: %op2 = load float, float* %op0
+Translating basic block: %op3 = load float, float* %op1
+Translating basic block: %op4 = call float @mod(float %op2, float %op3)
+Translating basic block: %op2 = load float, float* %op0
+Translating basic block: %op3 = load float, float* %op1
+Translating basic block: mod
+Translating basic block: call void @outputFloat(float %op4)
+Translating basic block: %op4 = call float @mod(float %op2, float %op3)
+Translating basic block: outputFloat
+Translating basic block: ret i32 0
+0.200000							0.200000
+0								0
+==========./testcases/12-global.cminus==========
+Translating basic block: .randomLCG_label_entry
+Translating basic block: %op0 = load i32, i32* @seed
+Translating basic block: %op1 = mul i32 %op0, 1103515245
+Translating basic block: %op2 = add i32 %op1, 12345
+Translating basic block: store i32 %op2, i32* @seed
+Translating basic block: %op3 = load i32, i32* @seed
+Translating basic block: ret i32 %op3
+Translating basic block: .randBin_label_entry
+Translating basic block: %op0 = call i32 @randomLCG()
+Translating basic block: randomLCG
+Translating basic block: %op1 = icmp sgt i32 %op0, 0
+Translating basic block: %op2 = zext i1 %op1 to i32
+Translating basic block: %op3 = icmp ne i32 %op2, 0
+Translating basic block: br i1 %op3, label %label4, label %label6
+Translating basic block: .randBin_label4
+Translating basic block: ret i32 1
+Translating basic block: .randBin_label5
+Translating basic block: ret i32 0
+Translating basic block: .randBin_label6
+Translating basic block: ret i32 0
+Translating basic block: .returnToZeroSteps_label_entry
+Translating basic block: %op0 = alloca i32
+Translating basic block: %op1 = alloca i32
+Translating basic block: store i32 0, i32* %op0
+Translating basic block: store i32 0, i32* %op1
+Translating basic block: br label %label2
+Translating basic block: .returnToZeroSteps_label2
+Translating basic block: %op3 = load i32, i32* %op1
+Translating basic block: %op4 = icmp slt i32 %op3, 20
+Translating basic block: %op5 = zext i1 %op4 to i32
+Translating basic block: %op6 = icmp ne i32 %op5, 0
+Translating basic block: br i1 %op6, label %label7, label %label10
+Translating basic block: .returnToZeroSteps_label7
+Translating basic block: %op8 = call i32 @randBin()
+Translating basic block: randBin
+Translating basic block: %op9 = icmp ne i32 %op8, 0
+Translating basic block: br i1 %op9, label %label11, label %label21
+Translating basic block: .returnToZeroSteps_label10
+Translating basic block: ret i32 20
+Translating basic block: .returnToZeroSteps_label11
+Translating basic block: %op12 = load i32, i32* %op0
+Translating basic block: %op13 = add i32 %op12, 1
+Translating basic block: store i32 %op13, i32* %op0
+Translating basic block: br label %label14
+Translating basic block: .returnToZeroSteps_label14
+Translating basic block: %op15 = load i32, i32* %op1
+Translating basic block: %op16 = add i32 %op15, 1
+Translating basic block: store i32 %op16, i32* %op1
+Translating basic block: %op17 = load i32, i32* %op0
+Translating basic block: %op18 = icmp eq i32 %op17, 0
+Translating basic block: %op19 = zext i1 %op18 to i32
+Translating basic block: %op20 = icmp ne i32 %op19, 0
+Translating basic block: br i1 %op20, label %label24, label %label26
+Translating basic block: .returnToZeroSteps_label21
+Translating basic block: %op22 = load i32, i32* %op0
+Translating basic block: %op23 = sub i32 %op22, 1
+Translating basic block: store i32 %op23, i32* %op0
+Translating basic block: br label %label14
+Translating basic block: .returnToZeroSteps_label24
+Translating basic block: %op25 = load i32, i32* %op1
+Translating basic block: ret i32 %op25
+Translating basic block: .returnToZeroSteps_label26
+Translating basic block: br label %label2
+Translating basic block: .main_label_entry
+Translating basic block: %op0 = alloca i32
+Translating basic block: store i32 0, i32* %op0
+Translating basic block: store i32 3407, i32* @seed
+Translating basic block: br label %label1
+Translating basic block: .main_label1
+Translating basic block: %op2 = load i32, i32* %op0
+Translating basic block: %op3 = icmp slt i32 %op2, 20
+Translating basic block: %op4 = zext i1 %op3 to i32
+Translating basic block: %op5 = icmp ne i32 %op4, 0
+Translating basic block: br i1 %op5, label %label6, label %label10
+Translating basic block: .main_label6
+Translating basic block: %op7 = call i32 @returnToZeroSteps()
+Translating basic block: returnToZeroSteps
+Translating basic block: call void @output(i32 %op7)
+Translating basic block: %op7 = call i32 @returnToZeroSteps()
+Translating basic block: output
+Translating basic block: %op8 = load i32, i32* %op0
+Translating basic block: %op9 = add i32 %op8, 1
+Translating basic block: store i32 %op9, i32* %op0
+Translating basic block: br label %label1
+Translating basic block: .main_label10
+Translating basic block: ret i32 0
+4								4
+2								2
+2								2
+4								4
+8								8
+2								2
+2								2
+2								2
+2								2
+2								2
+6								6
+2								2
+10								10
+8								8
+4								4
+2								2
+20								20
+2								2
+2								2
+8								8
+0								0
+==========./testcases/13-complex.cminus==========
+Translating basic block: .max_label_entry
+Translating basic block: %op2 = alloca i32
+Translating basic block: store i32 %arg0, i32* %op2
+Translating basic block: %op3 = alloca i32
+Translating basic block: store i32 %arg1, i32* %op3
+Translating basic block: %op4 = load i32, i32* %op2
+Translating basic block: %op5 = load i32, i32* %op3
+Translating basic block: %op6 = icmp sgt i32 %op4, %op5
+Translating basic block: %op7 = zext i1 %op6 to i32
+Translating basic block: %op8 = icmp ne i32 %op7, 0
+Translating basic block: br i1 %op8, label %label9, label %label12
+Translating basic block: .max_label9
+Translating basic block: %op10 = load i32, i32* %op2
+Translating basic block: ret i32 %op10
+Translating basic block: .max_label11
+Translating basic block: ret i32 0
+Translating basic block: .max_label12
+Translating basic block: %op13 = load i32, i32* %op3
+Translating basic block: ret i32 %op13
+Translating basic block: .knapsack_label_entry
+Translating basic block: %op2 = alloca i32
+Translating basic block: store i32 %arg0, i32* %op2
+Translating basic block: %op3 = alloca i32
+Translating basic block: store i32 %arg1, i32* %op3
+Translating basic block: %op4 = alloca i32
+Translating basic block: %op5 = load i32, i32* %op3
+Translating basic block: %op6 = icmp sle i32 %op5, 0
+Translating basic block: %op7 = zext i1 %op6 to i32
+Translating basic block: %op8 = icmp ne i32 %op7, 0
+Translating basic block: br i1 %op8, label %label9, label %label10
+Translating basic block: .knapsack_label9
+Translating basic block: ret i32 0
+Translating basic block: .knapsack_label10
+Translating basic block: %op11 = load i32, i32* %op2
+Translating basic block: %op12 = icmp eq i32 %op11, 0
+Translating basic block: %op13 = zext i1 %op12 to i32
+Translating basic block: %op14 = icmp ne i32 %op13, 0
+Translating basic block: br i1 %op14, label %label15, label %label16
+Translating basic block: .knapsack_label15
+Translating basic block: ret i32 0
+Translating basic block: .knapsack_label16
+Translating basic block: %op17 = load i32, i32* %op2
+Translating basic block: %op18 = mul i32 %op17, 11
+Translating basic block: %op19 = load i32, i32* %op3
+Translating basic block: %op20 = add i32 %op18, %op19
+Translating basic block: %op21 = icmp slt i32 %op20, 0
+Translating basic block: br i1 %op21, label %label22, label %label23
+Translating basic block: .knapsack_label22
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .knapsack_label23
+Translating basic block: %op24 = getelementptr [66 x i32], [66 x i32]* @dp, i32 0, i32 %op20
+%op20 = add i32 %op18, %op19
+op20
+Translating basic block: %op25 = load i32, i32* %op24
+Translating basic block: %op26 = icmp sge i32 %op25, 0
+Translating basic block: %op27 = zext i1 %op26 to i32
+Translating basic block: %op28 = icmp ne i32 %op27, 0
+Translating basic block: br i1 %op28, label %label29, label %label35
+Translating basic block: .knapsack_label29
+Translating basic block: %op30 = load i32, i32* %op2
+Translating basic block: %op31 = mul i32 %op30, 11
+Translating basic block: %op32 = load i32, i32* %op3
+Translating basic block: %op33 = add i32 %op31, %op32
+Translating basic block: %op34 = icmp slt i32 %op33, 0
+Translating basic block: br i1 %op34, label %label40, label %label41
+Translating basic block: .knapsack_label35
+Translating basic block: %op36 = load i32, i32* %op3
+Translating basic block: %op37 = load i32, i32* %op2
+Translating basic block: %op38 = sub i32 %op37, 1
+Translating basic block: %op39 = icmp slt i32 %op38, 0
+Translating basic block: br i1 %op39, label %label44, label %label45
+Translating basic block: .knapsack_label40
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .knapsack_label41
+Translating basic block: %op42 = getelementptr [66 x i32], [66 x i32]* @dp, i32 0, i32 %op33
+%op33 = add i32 %op31, %op32
+op33
+Translating basic block: %op43 = load i32, i32* %op42
+Translating basic block: ret i32 %op43
+Translating basic block: .knapsack_label44
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .knapsack_label45
+Translating basic block: %op46 = getelementptr [5 x i32], [5 x i32]* @w, i32 0, i32 %op38
+%op38 = sub i32 %op37, 1
+op38
+Translating basic block: %op47 = load i32, i32* %op46
+Translating basic block: %op48 = icmp slt i32 %op36, %op47
+Translating basic block: %op49 = zext i1 %op48 to i32
+Translating basic block: %op50 = icmp ne i32 %op49, 0
+Translating basic block: br i1 %op50, label %label51, label %label63
+Translating basic block: .knapsack_label51
+Translating basic block: %op52 = load i32, i32* %op2
+Translating basic block: %op53 = sub i32 %op52, 1
+Translating basic block: %op54 = load i32, i32* %op3
+Translating basic block: %op55 = call i32 @knapsack(i32 %op53, i32 %op54)
+Translating basic block: %op53 = sub i32 %op52, 1
+Translating basic block: %op54 = load i32, i32* %op3
+Translating basic block: knapsack
+Translating basic block: store i32 %op55, i32* %op4
+Translating basic block: br label %label56
+Translating basic block: .knapsack_label56
+Translating basic block: %op57 = load i32, i32* %op4
+Translating basic block: %op58 = load i32, i32* %op2
+Translating basic block: %op59 = mul i32 %op58, 11
+Translating basic block: %op60 = load i32, i32* %op3
+Translating basic block: %op61 = add i32 %op59, %op60
+Translating basic block: %op62 = icmp slt i32 %op61, 0
+Translating basic block: br i1 %op62, label %label89, label %label90
+Translating basic block: .knapsack_label63
+Translating basic block: %op64 = load i32, i32* %op2
+Translating basic block: %op65 = sub i32 %op64, 1
+Translating basic block: %op66 = load i32, i32* %op3
+Translating basic block: %op67 = call i32 @knapsack(i32 %op65, i32 %op66)
+Translating basic block: %op65 = sub i32 %op64, 1
+Translating basic block: %op66 = load i32, i32* %op3
+Translating basic block: knapsack
+Translating basic block: %op68 = load i32, i32* %op2
+Translating basic block: %op69 = sub i32 %op68, 1
+Translating basic block: %op70 = load i32, i32* %op3
+Translating basic block: %op71 = load i32, i32* %op2
+Translating basic block: %op72 = sub i32 %op71, 1
+Translating basic block: %op73 = icmp slt i32 %op72, 0
+Translating basic block: br i1 %op73, label %label74, label %label75
+Translating basic block: .knapsack_label74
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .knapsack_label75
+Translating basic block: %op76 = getelementptr [5 x i32], [5 x i32]* @w, i32 0, i32 %op72
+%op72 = sub i32 %op71, 1
+op72
+Translating basic block: %op77 = load i32, i32* %op76
+Translating basic block: %op78 = sub i32 %op70, %op77
+Translating basic block: %op79 = call i32 @knapsack(i32 %op69, i32 %op78)
+Translating basic block: %op69 = sub i32 %op68, 1
+Translating basic block: %op78 = sub i32 %op70, %op77
+Translating basic block: knapsack
+Translating basic block: %op80 = load i32, i32* %op2
+Translating basic block: %op81 = sub i32 %op80, 1
+Translating basic block: %op82 = icmp slt i32 %op81, 0
+Translating basic block: br i1 %op82, label %label83, label %label84
+Translating basic block: .knapsack_label83
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .knapsack_label84
+Translating basic block: %op85 = getelementptr [5 x i32], [5 x i32]* @v, i32 0, i32 %op81
+%op81 = sub i32 %op80, 1
+op81
+Translating basic block: %op86 = load i32, i32* %op85
+Translating basic block: %op87 = add i32 %op79, %op86
+Translating basic block: %op88 = call i32 @max(i32 %op67, i32 %op87)
+Translating basic block: %op67 = call i32 @knapsack(i32 %op65, i32 %op66)
+Translating basic block: %op87 = add i32 %op79, %op86
+Translating basic block: max
+Translating basic block: store i32 %op88, i32* %op4
+Translating basic block: br label %label56
+Translating basic block: .knapsack_label89
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .knapsack_label90
+Translating basic block: %op91 = getelementptr [66 x i32], [66 x i32]* @dp, i32 0, i32 %op61
+%op61 = add i32 %op59, %op60
+op61
+Translating basic block: store i32 %op57, i32* %op91
+Translating basic block: %op92 = load i32, i32* %op4
+Translating basic block: ret i32 %op92
+Translating basic block: .main_label_entry
+Translating basic block: %op0 = alloca i32
+Translating basic block: store i32 0, i32* %op0
+Translating basic block: store i32 5, i32* @n
+Translating basic block: store i32 10, i32* @m
+Translating basic block: %op1 = icmp slt i32 0, 0
+Translating basic block: br i1 %op1, label %label2, label %label3
+Translating basic block: .main_label2
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label3
+Translating basic block: %op4 = getelementptr [5 x i32], [5 x i32]* @w, i32 0, i32 0
+0
+
+Translating basic block: store i32 2, i32* %op4
+Translating basic block: %op5 = icmp slt i32 1, 0
+Translating basic block: br i1 %op5, label %label6, label %label7
+Translating basic block: .main_label6
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label7
+Translating basic block: %op8 = getelementptr [5 x i32], [5 x i32]* @w, i32 0, i32 1
+1
+
+Translating basic block: store i32 2, i32* %op8
+Translating basic block: %op9 = icmp slt i32 2, 0
+Translating basic block: br i1 %op9, label %label10, label %label11
+Translating basic block: .main_label10
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label11
+Translating basic block: %op12 = getelementptr [5 x i32], [5 x i32]* @w, i32 0, i32 2
+2
+
+Translating basic block: store i32 6, i32* %op12
+Translating basic block: %op13 = icmp slt i32 3, 0
+Translating basic block: br i1 %op13, label %label14, label %label15
+Translating basic block: .main_label14
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label15
+Translating basic block: %op16 = getelementptr [5 x i32], [5 x i32]* @w, i32 0, i32 3
+3
+
+Translating basic block: store i32 5, i32* %op16
+Translating basic block: %op17 = icmp slt i32 4, 0
+Translating basic block: br i1 %op17, label %label18, label %label19
+Translating basic block: .main_label18
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label19
+Translating basic block: %op20 = getelementptr [5 x i32], [5 x i32]* @w, i32 0, i32 4
+4
+
+Translating basic block: store i32 4, i32* %op20
+Translating basic block: %op21 = icmp slt i32 0, 0
+Translating basic block: br i1 %op21, label %label22, label %label23
+Translating basic block: .main_label22
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label23
+Translating basic block: %op24 = getelementptr [5 x i32], [5 x i32]* @v, i32 0, i32 0
+0
+
+Translating basic block: store i32 6, i32* %op24
+Translating basic block: %op25 = icmp slt i32 1, 0
+Translating basic block: br i1 %op25, label %label26, label %label27
+Translating basic block: .main_label26
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label27
+Translating basic block: %op28 = getelementptr [5 x i32], [5 x i32]* @v, i32 0, i32 1
+1
+
+Translating basic block: store i32 3, i32* %op28
+Translating basic block: %op29 = icmp slt i32 2, 0
+Translating basic block: br i1 %op29, label %label30, label %label31
+Translating basic block: .main_label30
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label31
+Translating basic block: %op32 = getelementptr [5 x i32], [5 x i32]* @v, i32 0, i32 2
+2
+
+Translating basic block: store i32 5, i32* %op32
+Translating basic block: %op33 = icmp slt i32 3, 0
+Translating basic block: br i1 %op33, label %label34, label %label35
+Translating basic block: .main_label34
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label35
+Translating basic block: %op36 = getelementptr [5 x i32], [5 x i32]* @v, i32 0, i32 3
+3
+
+Translating basic block: store i32 4, i32* %op36
+Translating basic block: %op37 = icmp slt i32 4, 0
+Translating basic block: br i1 %op37, label %label38, label %label39
+Translating basic block: .main_label38
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label39
+Translating basic block: %op40 = getelementptr [5 x i32], [5 x i32]* @v, i32 0, i32 4
+4
+
+Translating basic block: store i32 6, i32* %op40
+Translating basic block: br label %label41
+Translating basic block: .main_label41
+Translating basic block: %op42 = load i32, i32* %op0
+Translating basic block: %op43 = icmp slt i32 %op42, 66
+Translating basic block: %op44 = zext i1 %op43 to i32
+Translating basic block: %op45 = icmp ne i32 %op44, 0
+Translating basic block: br i1 %op45, label %label46, label %label50
+Translating basic block: .main_label46
+Translating basic block: %op47 = sub i32 0, 1
+Translating basic block: %op48 = load i32, i32* %op0
+Translating basic block: %op49 = icmp slt i32 %op48, 0
+Translating basic block: br i1 %op49, label %label54, label %label55
+Translating basic block: .main_label50
+Translating basic block: %op51 = load i32, i32* @n
+Translating basic block: %op52 = load i32, i32* @m
+Translating basic block: %op53 = call i32 @knapsack(i32 %op51, i32 %op52)
+Translating basic block: %op51 = load i32, i32* @n
+Translating basic block: %op52 = load i32, i32* @m
+Translating basic block: knapsack
+Translating basic block: call void @output(i32 %op53)
+Translating basic block: %op53 = call i32 @knapsack(i32 %op51, i32 %op52)
+Translating basic block: output
+Translating basic block: ret i32 0
+Translating basic block: .main_label54
+Translating basic block: call void @neg_idx_except()
+Translating basic block: neg_idx_except
+Translating basic block: ret i32 0
+Translating basic block: .main_label55
+Translating basic block: %op56 = getelementptr [66 x i32], [66 x i32]* @dp, i32 0, i32 %op48
+%op48 = load i32, i32* %op0
+op48
+Translating basic block: store i32 %op47, i32* %op56
+Translating basic block: %op57 = load i32, i32* %op0
+Translating basic block: %op58 = add i32 %op57, 1
+Translating basic block: store i32 %op58, i32* %op0
+Translating basic block: br label %label41
+15								15
+0								0
